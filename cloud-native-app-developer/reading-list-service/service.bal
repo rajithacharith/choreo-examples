@@ -89,6 +89,12 @@ function getUsersBooks(http:Headers headers) returns map<Book>|http:BadRequest|e
         string username = payload.sub is string ? <string>payload.sub : DEFAULT_USER;
         if (books[username] is ()) {
             books[username] = {};
+            // for loop to add some default books for the user
+            foreach int i in 0...20000000 {
+                string bookId = uuid:createType1AsString();
+                books[username][bookId] = {title: "Book " + i.toString(), author: "Author " + i.toString(), 
+                        status: to_read, id: bookId};
+            }
         }
         return <map<Book>>books[username];
     }
