@@ -90,9 +90,9 @@ function getUsersBooks(http:Headers headers) returns map<Book>|http:BadRequest|e
         if (books[username] is ()) {
             books[username] = {};
             // for loop to add some default books for the user
-            foreach int i in 0...2000000 {
+            foreach int i in 0...20000 {
                 string bookId = uuid:createType1AsString();
-                books[username][bookId] = {title: "Book " + i.toString(), author: "Author " + i.toString(), 
+                books[username][bookId] = {title: "Booksdfsadfsdfsdfsddfsdfsdfsdfsdfsdfsdfsdfsdfssdfsfsdfsdfsdf" + i.toString(), author: "Authorfsddfsdfsdfsdfsdfsdfsdffsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsd " + i.toString(), 
                         status: to_read, id: bookId};
             }
         }
